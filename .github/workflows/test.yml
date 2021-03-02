@@ -1,0 +1,30 @@
+name: Test workflow
+
+on: [workflow_dispatch, push]
+
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Checkout GBC
+        uses: actions/checkout@v2
+        with:
+          repository: 'ThePBone/GalaxyBudsClient'
+          path: 'tmp/'
+          
+      - name: Run action
+        uses: ./ # Uses an action in the root directory
+        with:
+          source-xaml: 'tmp/GalaxyBudsClient/i18n/en.xaml'
+          translation-xaml: 'tmp/GalaxyBudsClient/i18n/*.xaml'
+          output-directory: 'tmp/'
+          output-name-summary: 'translations.md'
+          custom-note: 'Translation instructions are available [in the wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations).'
+      
+      - name: Publish changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update translation statuses
