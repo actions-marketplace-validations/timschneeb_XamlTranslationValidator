@@ -1,0 +1,29 @@
+name: 'XamlTranslationValidator'
+description: 'Track localization progress, detect missing strings and generate summaries for XAML resource dictionaries'
+inputs:
+  source-xaml:
+    description: 'Main XAML dictionary'
+    required: true
+    
+  translation-xaml:
+    description: 'Translated XAML dictionaries (Globs/multiple files allowed)'
+    required: true
+
+  output-directory:
+    description: 'Target directory for auto-generated summaries'
+    required: false
+    default: "."
+
+  output-name-summary:
+    description: 'File name for summary file'
+    required: false
+    default: "translations.md"
+
+  custom-note:
+    description: 'Insert custom text in the summary file'
+    required: false
+    default: ""
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
