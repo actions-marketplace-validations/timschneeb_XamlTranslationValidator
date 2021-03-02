@@ -30,13 +30,13 @@ function load_xaml(path) {
     const out_name = core.getInput('output-name-summary');
     const note = core.getInput('custom-note');
 
-    const [err, files] = await glob_async(translations, null);
+    const [err, files] = await glob_async(translations, {"ignore":[source]});
     if(err !== null)
         throw new Error("Error while finding translation files (check translation-xaml):" + err);
 
     let master = load_xaml(source);
 
-    templ.build_summary(path.resolve(out_dir, out_name), dict, note)
+    templ.build_summary(path.resolve(out_dir, out_name), master, note)
 
 })().catch((error) => {
     core.setFailed(error.message);
