@@ -5,7 +5,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 %{NOTE}
 
 <table>
-<tr><th>Language</th><th>Progress</th><th>Missing strings</th></tr>
+<tr><th>Language</th><th>Progress</th><th>Missing strings</th><th>Details</th></tr>
 %{TABLE}
 </table>
 

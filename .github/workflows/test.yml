@@ -20,10 +20,15 @@ jobs:
         with:
           source-xaml: 'tmp/GalaxyBudsClient/i18n/en.xaml'
           translation-xaml: 'tmp/GalaxyBudsClient/i18n/*.xaml'
-          output-directory: 'tmp/'
+          output-directory: 'out/'
           output-name-summary: 'translations.md'
           custom-note: 'Translation instructions are available [in the wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations).'
-      
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: artifact
+          path: out/
+
       #- name: Publish changes
       #  uses: stefanzweifel/git-auto-commit-action@v4
       #  with:

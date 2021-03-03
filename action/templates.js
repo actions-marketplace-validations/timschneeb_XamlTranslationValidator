@@ -16,7 +16,7 @@ function build_summary(out_path, results, note = ""){
 
     results.forEach(function (result) {
         let temp = replace_var(template_row, "lang", `${result.lang_code} (${result.lang_name})`);
-        temp = replace_var(temp, "progress", `${result.progress}%`);
+        temp = replace_var(temp, "progress", `${result.percent}%`);
         temp = replace_var(temp, "missing", Object.keys(result.missing).length < 1 ? "No missing strings" :
             `${Object.keys(result.missing).length} missing string(s)`);
         temp = replace_var(temp, "link", `[> View details <](${result.lang_code}.md)`);
