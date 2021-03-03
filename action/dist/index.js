@@ -15859,10 +15859,10 @@ function build_summary(out_path, results, note = ""){
     let temp = replace_var(template, "note", note);
     temp = replace_var(temp, "table", table);
 
-    fs.mkdirSync(path.dirname(out_path));
+    if (!fs.existsSync(path.dirname(out_path))){
+        fs.mkdirSync(path.dirname(out_path));
+    }
     fs.writeFileSync(out_path, temp);
-
-    console.log(temp)
 }
 
 function build_details(out_dir, results){
@@ -15884,7 +15884,9 @@ function build_details(out_dir, results){
         temp = replace_var(temp, "missing", Object.keys(result.missing).length < 1 ? "No missing strings" :
             `${Object.keys(result.missing).length} missing string(s)`);
 
-        fs.mkdirSync(out_dir);
+        if (!fs.existsSync(out_dir)){
+            fs.mkdirSync(out_dir);
+        }
         fs.writeFileSync(__nccwpck_require__.ab + "XamlTranslationValidator/" + out_dir + '\\' + result.lang_code + '.md', temp);
     });
 }
