@@ -16,7 +16,7 @@ jobs:
           path: 'tmp/'
           
       - name: Run action
-        uses: ./action # Uses an action in the root directory
+        uses: ./ # Uses an action in the root directory
         with:
           source-xaml: 'tmp/GalaxyBudsClient/i18n/en.xaml'
           translation-xaml: 'tmp/GalaxyBudsClient/i18n/*.xaml'
