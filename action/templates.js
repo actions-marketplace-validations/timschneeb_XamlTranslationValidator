@@ -32,8 +32,6 @@ function build_summary(out_path, results, note = ""){
         fs.mkdirSync(path.dirname(out_path));
     }
     fs.writeFileSync(out_path, temp);
-
-    console.log(temp)
 }
 
 function build_details(out_dir, results){
