@@ -27,6 +27,7 @@ function build_summary(out_path, results, note = ""){
     let temp = replace_var(template, "note", note);
     temp = replace_var(temp, "table", table);
 
+    fs.mkdirSync(path.dirname(out_path));
     fs.writeFileSync(out_path, temp);
 
     console.log(temp)

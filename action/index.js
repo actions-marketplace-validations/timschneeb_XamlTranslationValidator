@@ -58,8 +58,6 @@ async function main() {
     const out_name = core.getInput('output-name-summary');
     const note = core.getInput('custom-note');
 
-    fs.mkdirSync(out_dir);
-
     const files = await glob_async(translations, {"ignore":[source]});
     let master = await load_xaml(source);
     let results = [];
