@@ -68,13 +68,13 @@ async function main() {
         let strings = await load_xaml(file);
 
         let count = 0;
-        let missing = [];
+        let missing = {};
 
         Object.keys(master).forEach(k => {
             if(k in strings)
                 count++;
             else
-                missing.push(k);
+                missing[k] = master[k];
         })
 
         result.missing = missing;
