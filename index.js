@@ -30,7 +30,7 @@ function load_xaml(path) {
     const out_name = core.getInput('output-name-summary');
     const note = core.getInput('custom-note');
 
-    const [err, files] = await glob_async(translations, {"ignore":[source]});
+    const [err, files] = await glob_async(translations, null);
     if(err !== null)
         throw new Error("Error while finding translation files (check translation-xaml):" + err);
 
