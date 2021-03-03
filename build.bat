@@ -1,2 +1,2 @@
-CALL ncc build index.js --license licenses.txt
-xcopy /E /I /Y templates dist\templates
+CALL ncc build action\index.js --license licenses.txt -o action\dist
+xcopy /E /I /Y action\templates action\dist\templates
