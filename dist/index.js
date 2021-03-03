@@ -15731,7 +15731,7 @@ function replace_var(input, key, value){
 }
 
 function build_summary(out_path, table, note = ""){
-    const template = fs.readFileSync(out_path.resolve(__dirname, 'templates/summary.md'));
+    const template = fs.readFileSync(__nccwpck_require__.ab + "summary.md");
     let temp = replace_var(template, "note", note);
     temp = replace_var(temp, "table", table);
 
