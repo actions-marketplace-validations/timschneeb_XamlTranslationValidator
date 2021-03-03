@@ -15873,7 +15873,7 @@ function build_details(out_dir, results){
         let table_rows = "";
 
         Object.keys(result.missing).forEach(key => {
-            let temp = replace_var(details_row, "key", `\`${key}\``);
+            let temp = replace_var(details_row, "key", key);
             temp = replace_var(temp, "orig", result.missing[key]);
             table_rows = table_rows.concat(temp);
         })
