@@ -15887,7 +15887,7 @@ function build_details(out_dir, results){
         if (!fs.existsSync(out_dir)){
             fs.mkdirSync(out_dir);
         }
-        fs.writeFileSync(__nccwpck_require__.ab + "XamlTranslationValidator/" + out_dir + '\\' + result.lang_code + '.md', temp);
+        fs.writeFileSync(path.join(out_dir, `${result.lang_code}.md`), temp);
     });
 }
 

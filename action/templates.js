@@ -56,6 +56,6 @@ function build_details(out_dir, results){
         if (!fs.existsSync(out_dir)){
             fs.mkdirSync(out_dir);
         }
-        fs.writeFileSync(path.resolve(out_dir, `${result.lang_code}.md`), temp);
+        fs.writeFileSync(path.join(out_dir, `${result.lang_code}.md`), temp);
     });
 }
