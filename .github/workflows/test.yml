@@ -13,7 +13,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: 'ThePBone/GalaxyBudsClient'
-          token: '6f3d021b6b48dc226b347d0d51e69911b940e248'
           path: 'tmp/'
           
       - name: Run action
