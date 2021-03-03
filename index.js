@@ -1,10 +1,10 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const glob = require("glob")
-const fs = require("fs")
+const glob = require("glob");
+const fs = require("fs");
 const path = require('path');
 const xml2js = require('xml2js');
-const templ = require("./templates.js")
+const templ = require("./templates.js");
 
 function promisify(f) {
     return function(...args) {
@@ -21,9 +21,8 @@ function load_xaml(path) {
     let strings = new Map();
 
 }
-    
-    
-(async () => {
+
+async function main() {
     const source = core.getInput('source-xaml');
     //const translations = core.getInput('translation-xaml');
     const out_dir = core.getInput('output-directory');
@@ -35,9 +34,10 @@ function load_xaml(path) {
         throw new Error("Error while finding translation files (check translation-xaml):" + err);*/
 
     let master = load_xaml(source);
+    templ.build_summary(path.resolve(out_dir, out_name), master, note);
 
-    templ.build_summary(path.resolve(out_dir, out_name), master, note)
+}
 
-})().catch((error) => {
+main().catch((error) => {
     core.setFailed(error.message);
 });

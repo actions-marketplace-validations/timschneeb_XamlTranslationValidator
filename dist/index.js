@@ -7,11 +7,11 @@ module.exports =
 
 const core = __nccwpck_require__(3301);
 const github = __nccwpck_require__(8387);
-const glob = __nccwpck_require__(6056)
-const fs = __nccwpck_require__(5747)
+const glob = __nccwpck_require__(6056);
+const fs = __nccwpck_require__(5747);
 const path = __nccwpck_require__(5622);
 const xml2js = __nccwpck_require__(8474);
-const templ = __nccwpck_require__(7879)
+const templ = __nccwpck_require__(7879);
 
 function promisify(f) {
     return function(...args) {
@@ -28,9 +28,8 @@ function load_xaml(path) {
     let strings = new Map();
 
 }
-    
-    
-(async () => {
+
+async function main() {
     const source = core.getInput('source-xaml');
     //const translations = core.getInput('translation-xaml');
     const out_dir = core.getInput('output-directory');
@@ -42,10 +41,11 @@ function load_xaml(path) {
         throw new Error("Error while finding translation files (check translation-xaml):" + err);*/
 
     let master = load_xaml(source);
+    templ.build_summary(path.resolve(out_dir, out_name), master, note);
 
-    templ.build_summary(path.resolve(out_dir, out_name), master, note)
+}
 
-})().catch((error) => {
+main().catch((error) => {
     core.setFailed(error.message);
 });
 
@@ -15730,12 +15730,12 @@ function replace_var(input, key, value){
     return input.replace(`%{${key.toUpperCase()}}`, value);
 }
 
-function build_summary(path, table, note = ""){
-    const template = fs.readFileSync(path.resolve(__dirname, 'templates/summary.md'));
+function build_summary(out_path, table, note = ""){
+    const template = fs.readFileSync(out_path.resolve(__dirname, 'templates/summary.md'));
     let temp = replace_var(template, "note", note);
     temp = replace_var(temp, "table", table);
 
-    fs.writeFileSync(path, temp);
+    fs.writeFileSync(out_path, temp);
 }
 
 /***/ }),
