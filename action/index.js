@@ -64,7 +64,6 @@ async function main() {
 
     for (const file of files) {
         let result = new Result({ "path": file });
-        core.debug(file)
         let strings = await load_xaml(file);
 
         let count = 0;
@@ -83,7 +82,7 @@ async function main() {
     }
 
     templ.build_summary(path.resolve(out_dir, out_name), results, note);
-    core.debug(path.resolve(out_dir, out_name));
+    templ.build_details(out_dir, results, note);
 }
 
 main().catch((error) => {

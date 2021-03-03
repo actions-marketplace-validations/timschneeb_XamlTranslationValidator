@@ -3,7 +3,8 @@ const path = require('path');
 
 module.exports =
     {
-        build_summary
+        build_summary,
+        build_details
     }
 
 function replace_var(input, key, value){
